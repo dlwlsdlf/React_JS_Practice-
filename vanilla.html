@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <span>Total clicks : 0 </span>
+    <button id = "btn">click me</button>
+</body>
+<script>
+    let counter = 0 ;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+
+    function handleClick(){
+        counter++;
+        span.innerText = `Total clicks : ${counter}`;
+
+    }
+
+    button.addEventListener("click", handleClick);
+
+
+
+
+
+
+
+    /*
+    let counter =0;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+    function handleClick(){
+        counter ++;
+        span.innerText = `total click :  ${counter}`;
+    }
+    button.addEventListener("click", handleClick);ㄴㅇㄹ
+    */
+</script>
+</html>
