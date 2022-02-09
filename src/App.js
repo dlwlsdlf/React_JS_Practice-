@@ -10,7 +10,7 @@ function App() {
 
 
   useEffect(()=>{
-    console.log("CALL THE API...");
+    console.log("CALL THE API....");
   }, []);
   return (
     <div>
