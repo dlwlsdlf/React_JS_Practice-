@@ -4,40 +4,17 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [coins, setCoins] = useState([]);
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetch("https://api.coinpaprika.com/v1/tickers")
+    fetch(
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`
+    )
       .then((response) => response.json())
-      .then((json) => {
-        setCoins(json);
-        setLoading(false);
-      });
+      .then((json) => setMovies(json.data.movies));
+      setLoading(false);
   }, []);
-  const [money,setMoney] =useState(0);
-  const [result,setResult] =useState(0);
-  const onChange = (event)=>setMoney(event.target.value);
-  const onSelect = (event) =>setResult(event.target.value);
-
-  return (
-    <div>
-      <h1>The Coins! {loading ? "" :`(${coins.length})` }</h1>
-      {loading ? <strong>Loding...</strong> : (
-        <select onChange={onSelect}>
-        {coins.map((coin) => (
-          <option key={coin.id} value={coin.quotes.USD.price}>
-            {coin.name} ({coin.symbol}) : {coin.quotes.USD.price} USD
-          </option>
-        ))}
-      </select>)}
-      <input
-        value={money}
-        type="number"
-        placeholder="money (us)"
-        onChange={onChange}
-      />
-      <h2> you get ({money/result})</h2>
-    </div>
-  );
+  console.log(movies);
+  return <div>{loading ? <h1>Loading . . .</h1> : null}</div>;
 }
 
 export default App;
